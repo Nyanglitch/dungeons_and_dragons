@@ -1,10 +1,12 @@
 import random
-import re
 
 print("Welcome to DUNGEONS AND DRAGONS")
 print("You see two caves in front of you.\nOne has treasures, other - certain death!")
 
+random_death_phrases = ["fire breath!", "lunar dragon magic!", "pit with sharp sticks!", "shark-dragon!", "deadly gas!", "falling and breaking your neck!"]
+
 counter = 0
+gold = 0
 continue_input = 'y'
 user_input = ""
 allowed_user_inputs = ['1', '2']
@@ -19,16 +21,13 @@ while continue_input == 'y':
 	lucky_cave = str(random.randint(1, 2))
 
 	if user_input == lucky_cave:
-		print("Lucky!")
-		counter = counter + 1
+		counter += 1
+		gold += random.randint(1, 666)
+		print("Lucky! Gold looted:", gold)
 	else:
-		print("You died! Lucky caves:", counter)
+		print("You died from " + random_death_phrases[random.randrange(0, len(random_death_phrases))] + "\nLucky caves:", counter, "\nGold you looted and lost:", gold)
 		continue_input = input("Play again? (y/n): ").lower()
-		if continue_input not in allowed_continue_inputs:
-			while continue_input not in allowed_continue_inputs:
-				continue_input = input("Letter not supported. Play again? (y/n): ").lower()
-		else:
-			if continue_input == 'y':
-				counter = 0
-			else: 
-				break
+		while continue_input not in allowed_continue_inputs:
+			continue_input = input("Letter not supported. Play again? (y/n): ").lower()
+		counter = 0
+		gold = 0
