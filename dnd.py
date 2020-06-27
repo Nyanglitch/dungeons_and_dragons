@@ -27,9 +27,14 @@ while continue_input == 'y':
 		gold += gold_looted
 		print("Lucky! Gold looted:", gold_looted)
 	else:
+		if gold >= 500:
+			death_insurance = input("You are about to die!\nWould you like to buy death insurance for 500 gold? (y/n): ").lower()
+			if death_insurance == "y" and gold >= 500:
+				gold -= 500
+				continue
 		print("You died from " + random_death_phrases[random.randrange(0, len(random_death_phrases))] + "\nLucky caves:", counter, "\nGold you looted and lost:", gold)
 		continue_input = input("Play again? (y/n): ").lower()
 		while continue_input not in allowed_continue_inputs:
 			continue_input = input("Letter not supported. Play again? (y/n): ").lower()
-		counter = 0
-		gold = 0
+			counter = 0
+			gold = 0
