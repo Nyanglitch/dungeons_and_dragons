@@ -6,19 +6,19 @@ print("You see two caves in front of you.\nOne has treasures, other - certain de
 
 counter = 0
 continue_input = 'y'
-user_input = 0
-allowed_user_inputs = [1, 2]
+user_input = ""
+allowed_user_inputs = ['1', '2']
 allowed_continue_inputs = ['y', 'n']
 
 while continue_input == 'y':
-	user_input = 0
-	while int(user_input) not in allowed_user_inputs:
+	user_input = ''
+	while user_input not in allowed_user_inputs:
 		print("Which cave you'll pick? (1/2): ")
 		user_input = input("> ")
 
-	lucky_cave = random.randint(1, 2)
+	lucky_cave = str(random.randint(1, 2))
 
-	if int(user_input) == lucky_cave:
+	if user_input == lucky_cave:
 		print("Lucky!")
 		counter = counter + 1
 	else:
