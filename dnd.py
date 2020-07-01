@@ -23,13 +23,13 @@ while continue_input == 'y':
 
 	if user_input == lucky_cave:
 		counter += 1
-		gold_looted = random.randint(1, 666)
+		gold_looted = random.randint(0, 666)
 		gold += gold_looted
 		print("Lucky! Gold looted:", gold_looted)
 	else:
 		if gold >= 500:
 			death_insurance = input("You are about to die!\nWould you like to buy death insurance for 500 gold? (y/n): ").lower()
-			if death_insurance == "y" and gold >= 500:
+			if death_insurance == "y":
 				gold -= 500
 				continue
 		print("You died from " + random_death_phrases[random.randrange(0, len(random_death_phrases))] + "\nLucky caves:", counter, "\nGold you looted and lost:", gold)
